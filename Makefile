@@ -1,6 +1,7 @@
 CC = gcc
 CFLAGS = -std=gnu99
 HEADERS = error.h filter.h dns_serv.h dns_packet.h
+ALL_FILES = error.h error.c filter.c filter.h server.c dns_serv.c dns_serv.h dns_packet.c dns_packet.h Makefile README.md manual.pdf
 TARGET = server
 
 .PHONY : all
@@ -24,6 +25,9 @@ dns_serv.o: dns_serv.c dns_serv.h dns_packet.h error.h
 
 dns_packet.o: dns_packet.c dns_packet.h filter.h
 	$(CC) $(CFLAGS) -c $<
+
+tar:
+	tar -czvf xjavor20.tar.gz $(ALL_FILES)
 
 clean:
 	$(RM) *.o $(TARGET) *.out

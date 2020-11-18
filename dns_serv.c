@@ -107,7 +107,7 @@ void set_qr_bit(char * buf)
     buf[2] = buf[2] | qr;
 }
 
-void listen_sockets()
+int listen_sockets()
 {
 	struct sockaddr_in servaddr;
 	int sockfd;
@@ -119,6 +119,8 @@ void listen_sockets()
     servaddr.sin_addr.s_addr = INADDR_ANY; 
     servaddr.sin_port = htons(dns_server.port); 
 
-	assert(bind(sockfd, (const struct sockaddr *) &servaddr, sizeof (servaddr)) == 0);
+	if(bind(sockfd, (const struct sockaddr *) &servaddr, sizeof (servaddr)))
+        return errorMsg("Socket bind was not successful. Try executing with 'sudo'");
 	dns_server.listen_fd = sockfd;
+    return EXIT_SUCCESS;
 }

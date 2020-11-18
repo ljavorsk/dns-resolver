@@ -50,7 +50,8 @@ void set_qr_bit(char * buf);
 
 /**
  * Opens a socket for the communication with client
+ * @return Success of the operation
  */
-void listen_sockets();
+int listen_sockets();
 
 #endif //DNS_SERV_H

@@ -13,6 +13,7 @@
 #include "dns_serv.h"
 #include <stdlib.h>
 #include <unistd.h>
+#include <string.h>
 
 
 int main(int argc, char *argv[])
@@ -22,10 +23,24 @@ int main(int argc, char *argv[])
    char *server;
    int port = 53;
    char *filter_file;
+
+   // Print help
+   if(argc == 2 && !strcmp(argv[1], "--help"))
+   {
+      printf("Usage: dns -s <SERVER> [-p <PORT>] -f <FILTER_FILENAME>\n");
+      printf("DNS resolver listening on PORT, filtering domains stored in FILTER_FILENAME\n");
+      printf("and forwarding valid request to the SERVER for resolution\n\n");
+      printf("   -s SERVER                 DNS server which resolves valid requests\n");
+      printf("   -p PORT                   Listening port for the DNS resolver (default 53)\n");
+      printf("   -f FILTER_FILENAME        Path to the filter file\n");
+      return 0;
+   }
    
    // Parse and check arguments
-   while((option = getopt(argc, argv, ":s:f:p:")) != -1){ 
-      switch(option){
+   while((option = getopt(argc, argv, ":s:f:p:")) != -1)
+   { 
+      switch(option)
+      {
          case 's':
             server_flag++;
             server = optarg;
@@ -59,13 +74,15 @@ int main(int argc, char *argv[])
         }
    }
 
-   if(server_flag != 1 || filter_flag != 1 || port_flag > 1){
+   if(server_flag != 1 || filter_flag != 1 || port_flag > 1)
+   {
         return errorMsg("You can only provide 3 options\n"
         "('-s server' and '-f filter' are mandatory, '-p port' is optional)");
    } 
-   else{
+   else
+   {
       dns_init(port);
-      listen_sockets();
+      if(listen_sockets()) return EXIT_FAILURE;
       dns_loop(filter_file, server);
    }
 }

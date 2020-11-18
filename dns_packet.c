@@ -27,11 +27,12 @@ int dns_request_parse (dns_packet_t *pkt, void *pkt_data, u_int16_t pkt_size, ch
 	memcpy (pkt->data, pkt_data + DNS_HEADER_SIZE, pkt_size - DNS_HEADER_SIZE);
 	pkt->data_size = pkt_size - DNS_HEADER_SIZE;
 
-    int	i, result = 0;
-	while (i < pkt->header.qdcount)
+    int result = 0;
+    int x = 0;
+	while (x < pkt->header.qdcount)
 	{
 		result = dns_question_parse (pkt, filter_fn);
-		i++;
+		x++;
 	}
 	return result;
 }
