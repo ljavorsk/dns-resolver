@@ -23,7 +23,7 @@ and returns the answer to the client.
 `./dns -s "8.8.8.8" -p 4242 -f ./filer_domains.txt`
 
 ### Print help
-`./dns --help`
+`./dns --help`  
 This command prints the help, to make user better understand how to use this tool.
 
 ## Not implemented
