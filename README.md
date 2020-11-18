@@ -35,3 +35,18 @@ This command prints the help, to make user better understand how to use this too
 ## Not implemented
 The IPv6 is not implemented in this resolver, so it won't work.  
 Also you need to provide server as IP adress not as domain name in `-s` argument.  
+
+## Files
+.  
+├── server.c  
+├── error.c  
+├── error.h  
+├── dns_serv.c  
+├── dns_serv.h  
+├── dns_packet.c  
+├── dns_packet.h  
+├── filter.c     
+├── filter.h     
+├── manual.pdf   
+├── Makefile     
+└── README.md    
