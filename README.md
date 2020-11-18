@@ -1,13 +1,19 @@
 # Filtering DNS resolver
 
+**Author:** Lukas Javorsky  
+**Student ID:** xjavor20  
+**School:** BUT FIT  
+**Subject:** ISA (Network Applications and Network Administration)  
+**Application language:** C
+
 ## Abstract
-Local DNS resolver that resolves only A type queries.  
-Any other query types are returned as NOTIMP (RCODE = 4).  
+Local DNS resolver that resolves only **A** type queries.  
+Any other query types are returned as **NOTIMP** (**RCODE = 4**).  
 DNS resolver filters the permited domains which are listed in file given
-by -f argument.  
-User can specify custom port (-p argument) which will DNS resolver listen to.  
-If not the port is 53 by default.  
-If the query is correct, DNS resolver sends this query to the specified (-s argument) DNS server
+by `-f` argument.  
+User can specify custom port (`-p` argument) which will DNS resolver listen to.  
+If not the port is **53** by default.  
+If the query is correct, DNS resolver sends this query to the specified (`-s` argument) DNS server
 and returns the answer to the client.  
 
 ## Usage
