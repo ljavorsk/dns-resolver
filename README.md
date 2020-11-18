@@ -16,6 +16,12 @@ If not the port is **53** by default.
 If the query is correct, DNS resolver sends this query to the specified (`-s` argument) DNS server
 and returns the answer to the client.  
 
+## Compilation
+Makefile is present for compilation, so it makes it really simple.  
+You just run `make` or `make all` and it will compile and link coresponding files into one binary file **dns**.  
+To clean all object and binary files run `make clean`.  
+There is also additional option `make tar` which creates **xjavor20.tar.gz** containg this project.  
+
 ## Usage
 `./dns -s <server> [-p <port>] -f <filter_filename>`
 
